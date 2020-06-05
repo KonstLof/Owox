@@ -1,0 +1,401 @@
+version: 2
+
+models:
+
+  - name: fct_ad_cost_table
+    description: This fact table contains advertising costs by date and UTM.
+    columns:
+        - name: Date
+          description: Date.
+          tests:
+              - not_null
+        - name: uuidChannel
+          description: Foreign key to dim_channel.
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_channel')
+                  field: uuidChannel
+        - name: uuidSourceMedium
+          description: Foreign key to dim_source_medium. 
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_source_medium')
+                  field: uuidSourceMedium
+        - name: uuidCampaign
+          description: Foreign key to dim_campaign. 
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_campaign')
+                  field: uuidCampaign
+        - name: uuidContent
+          description: Foreign key to dim_content.
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_content')
+                  field: uuidContent
+        - name: uuidTerm
+          description: Term (laser cutting online, online laser cutting service, bespoke metal, etc).
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_term')
+                  field: uuidTerm
+        - name: countryISOCode
+          description: Foreign key to dim_country_group.
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_country_group')
+                  field: countryISOCode
+        - name: Impressions
+          description: Impressions.
+        - name: adClicks
+          description: Advertise click.
+        - name: adCost
+          description: Advertise cost.
+        - name: CPC
+          description: CPC. 
+        - name: CTR
+          description: CTR. 
+
+  - name: fct_big_table
+    description: This fact table contains UTM's detailed data.
+    columns:
+        - name: Date
+          description: Date.
+          tests:
+              - not_null
+        - name: uuidChannel
+          description: Foreign key to dim_channel.
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_channel')
+                  field: uuidChannel
+        - name: uuidSourceMedium
+          description: Foreign key to dim_source_medium. 
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_source_medium')
+                  field: uuidSourceMedium
+        - name: uuidCampaign
+          description: Foreign key to dim_campaign. 
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_campaign')
+                  field: uuidCampaign
+        - name: uuidContent
+          description: Foreign key to dim_content.
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_content')
+                  field: uuidContent
+        - name: uuidTerm
+          description: Term (laser cutting online, online laser cutting service, bespoke metal, etc).
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_term')
+                  field: uuidTerm
+        - name: countryISOCode
+          description: Foreign key to dim_country_group.
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_country_group')
+                  field: countryISOCode
+        - name: IdClient
+          description: Client unique identifier.
+          tests:
+              - not_null
+        - name: IdUser
+          description: User unique identifier.
+        - name: Transactions
+          description: Transactions count.
+        - name: transactionRevenue
+          description: Transactions revenue. 
+        - name: engagedUser30s
+          description: Goal 1. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: quoteCreated
+          description: Goal 2. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: engagedUser60s
+          description: Goal 3. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: viewedSignupPage
+          description: Goal 4. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: signupServerSide
+          description: Goal 7. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: quoteCreated2
+          description: Goal 8. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: signupFrontEnd
+          description: Goal 12. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: quoteAccepted
+          description: Goal 13. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: inProductionPurchase
+          description: Goal 9. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: cadFileUpload
+          description: Goal 10. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: engagedUserBlog
+          description: Goal 16. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: clickedBtnInstantQuote
+          description: Goal 17. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+
+  - name: fct_ad_cost
+    description: This fact table contains advertising costs by periods.
+    columns:
+        - name: idPeriod
+          description: Foreign key to dim_period.
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_period')
+                  field: idPeriod
+        - name: uuidChannel
+          description: Foreign key to dim_channel.
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_channel')
+                  field: uuidChannel
+        - name: uuidSourceMedium
+          description: Foreign key to dim_source_medium. 
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_source_medium')
+                  field: uuidSourceMedium
+        - name: uuidCampaign
+          description: Foreign key to dim_campaign. 
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_campaign')
+                  field: uuidCampaign
+        - name: uuidContent
+          description: Foreign key to dim_content.
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_content')
+                  field: uuidContent
+        - name: uuidTerm
+          description: Term (laser cutting online, online laser cutting service, bespoke metal, etc).
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_term')
+                  field: uuidTerm
+        - name: countryISOCode
+          description: Foreign key to dim_country_group.
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_country_group')
+                  field: countryISOCode
+        - name: AdCost
+          description: Advertising cost by period.
+        - name: prevAdCost
+          description: Advertising cost by previos period.
+
+  - name: fct_revenue
+    description: This fact table contains transaction by periods.
+    columns:
+        - name: idPeriod
+          description: Foreign key to dim_period.
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_period')
+                  field: idPeriod
+        - name: uuidChannel
+          description: Foreign key to dim_channel.
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_channel')
+                  field: uuidChannel
+        - name: uuidSourceMedium
+          description: Foreign key to dim_source_medium. 
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_source_medium')
+                  field: uuidSourceMedium
+        - name: uuidCampaign
+          description: Foreign key to dim_campaign. 
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_campaign')
+                  field: uuidCampaign
+        - name: uuidContent
+          description: Foreign key to dim_content.
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_content')
+                  field: uuidContent
+        - name: uuidTerm
+          description: Term (laser cutting online, online laser cutting service, bespoke metal, etc).
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_term')
+                  field: uuidTerm
+        - name: countryISOCode
+          description: Foreign key to dim_country_group.
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_country_group')
+                  field: countryISOCode
+        - name: Revenue
+          description: Transaction revenue by period.
+        - name: prevRevenue
+          description: Transaction revenue by previos period.
+
+  - name: fct_signup
+    description: This fact table contains signup by periods. g8_complete = 1 filter applied.
+    columns:
+        - name: idPeriod
+          description: Foreign key to dim_period.
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_period')
+                  field: idPeriod
+        - name: uuidChannel
+          description: Foreign key to dim_channel.
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_channel')
+                  field: uuidChannel
+        - name: uuidSourceMedium
+          description: Foreign key to dim_source_medium. 
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_source_medium')
+                  field: uuidSourceMedium
+        - name: uuidCampaign
+          description: Foreign key to dim_campaign. 
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_campaign')
+                  field: uuidCampaign
+        - name: uuidContent
+          description: Foreign key to dim_content.
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_content')
+                  field: uuidContent
+        - name: uuidTerm
+          description: Term (laser cutting online, online laser cutting service, bespoke metal, etc).
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_term')
+                  field: uuidTerm
+        - name: countryISOCode
+          description: Foreign key to dim_country_group.
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_country_group')
+                  field: countryISOCode
+        - name: signUp
+          description: Signup by period.
+        - name: prevSignUp
+          description: Signup by previos period.
+
+  - name: fct_cr
+    description: This fact table contains conversion rate by periods. g8_complete = 1 filter applied to count users.
+    columns:
+        - name: idPeriod
+          description: Foreign key to dim_period.
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_period')
+                  field: idPeriod
+        - name: countryISOCode
+          description: Foreign key to dim_country_group.
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('dim_country_group')
+                  field: countryISOCode
+        - name: CR
+          description: Conversion rate by period.
+        - name: prevCR
+          description: Conversion rate by previos period.
+

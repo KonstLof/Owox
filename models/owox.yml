@@ -1,0 +1,203 @@
+version: 2
+
+models:
+
+  - name: bi_periods
+    description: This view periods of date for reporting
+    columns:
+        - name: Period
+          description: Period description (Last week, Last 2 weeks, Last month, Last year, etc)
+          tests:
+              - not_null
+        - name: Date
+          description: Date
+          tests:
+              - not_null
+        - name: Sort
+          description: Sort order for period.
+          tests:
+              - not_null
+        - name: dateBegin
+          description: Begin of period.
+          tests:
+              - not_null
+        - name: dateEnd
+          description: End of period.
+          tests:
+              - not_null
+        - name: periodLabel
+          description: Label for period like (Last week (2020-05-18 - 2020-05-24))
+          tests:
+              - not_null
+
+  - name: bi_utm_table
+    description: This table contains UTM's data by date for loaded period
+    columns:
+        - name: Date
+          description: Date, partitioned column
+          tests:
+              - not_null
+        - name: uuidUTM
+          description: GUID, unique identifier for UTM, clustered column
+          tests:
+              - not_null
+              - unique
+        - name: sourceMedium
+          description: Identifies which site sent the traffic, and is a required parameter and what type of link was used, such as cost per click or email. 
+          tests:
+              - not_null
+        - name: Campaign
+          description: Identifies a specific product promotion or strategic campaign.
+          tests:
+              - not_null
+        - name: Content
+          description: Identifies what specifically was clicked to bring the user to the site, such as a banner ad or a text link. It is often used for A/B testing and content-targeted ads. 
+          tests:
+              - not_null
+        - name: Term
+          description: Identifies search terms. 
+          tests:
+              - not_null
+
+  - name: bi_ad_cost_table
+    description: This table contains advertising costs
+    columns:
+        - name: Date
+          description: Date, partitioned column
+          tests:
+              - not_null
+        - name: uuidUTM
+          description: GUID, unique identifier for UTM, clustered column
+          tests:
+              - not_null
+              - unique
+              - relationships:
+                  to: ref('bi_utm_table')
+                  field: uuidUTM
+        - name: Impressions
+          description: Impressions.
+        - name: adClicks
+          description: Advertise click.
+        - name: adCost
+          description: Advertise cost.
+        - name: CPC
+          description: CPC. 
+        - name: CTR
+          description: CTR. 
+        - name: Channel
+          description: Channel (Paid Facebook, Organic, Paid google search etc.). 
+          tests:
+              - not_null
+
+  - name: bi_big_table
+    description: This table contains UTM's detailed data
+    columns:
+        - name: Date
+          description: Date, partitioned column
+          tests:
+              - not_null
+        - name: uuidUTM
+          description: GUID, unique identifier for UTM, clustered column
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('bi_utm_table')
+                  field: uuidUTM
+        - name: IdClient
+          description: Client unique identifier.
+          tests:
+              - not_null
+        - name: IdUser
+          description: User unique identifier.
+        - name: Transactions
+          description: Transactions count.
+        - name: transactionRevenue
+          description: Transactions revenue. 
+        - name: Channel
+          description: Channel (Paid Facebook, Organic, Paid google search etc.). 
+          tests:
+              - not_null
+        - name: engagedUser30s
+          description: Goal 1. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: quoteCreated
+          description: Goal 2. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: engagedUser60s
+          description: Goal 3. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: viewedSignupPage
+          description: Goal 4. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: signupServerSide
+          description: Goal 7. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: quoteCreated2
+          description: Goal 8. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: signupFrontEnd
+          description: Goal 12. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: quoteAccepted
+          description: Goal 13. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: inProductionPurchase
+          description: Goal 9. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: cadFileUpload
+          description: Goal 10. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: engagedUserBlog
+          description: Goal 16. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
+        - name: clickedBtnInstantQuote
+          description: Goal 17. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1]
+                    quote: false
