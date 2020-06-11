@@ -11,4 +11,4 @@ SELECT cast(date AS date) AS Date
       ,CPC
       ,CTR
   FROM {{ get_ad_cost_table_name() }}
- WHERE date between {{ var('start_date') }} and {{ var('end_date') }}
+ WHERE cast(date as date) between {{ get_load_start() }} and {{ get_load_end() }}
