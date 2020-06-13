@@ -70,8 +70,10 @@ SELECT idPeriod
 )
 SELECT U1.idPeriod
       ,U1.countryISOCode
-      ,case C1.Clients when 0 then 0 else U1.Users / C1.Clients end AS CR
-      ,case C1.prevClients when 0 then 0 else U1.prevUsers / C1.prevClients end AS prevCR
+      ,U1.Users
+      ,C1.Clients
+      ,U1.prevUsers
+      ,C1.prevClients
   FROM U1
   JOIN C1
     ON C1.idPeriod = U1.idPeriod

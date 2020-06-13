@@ -22,4 +22,4 @@ SELECT date AS Date
       ,g16_complete AS engagedUserBlog
       ,g17_complete AS clickedBtnInstantQuote
   FROM {{ get_big_table_name() }}
- WHERE date between {{ var('start_date') }} and {{ var('end_date') }}
+ WHERE cast(date as date) between {{ get_load_start() }} and {{ get_load_end() }}

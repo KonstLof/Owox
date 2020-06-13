@@ -394,8 +394,12 @@ models:
               - relationships:
                   to: ref('dim_country_group')
                   field: countryISOCode
-        - name: CR
-          description: Conversion rate by period.
-        - name: prevCR
-          description: Conversion rate by previos period.
+        - name: Users
+          description: Distinct users count for conversion rate calculation by period.
+        - name: prevUsers
+          description: Distinct users count for conversion rate calculation by previos period.
+        - name: Clients
+          description: Distinct clients count for conversion rate calculation by period.
+        - name: prevClients
+          description: Distinct clients count for conversion rate calculation by previos period.
 

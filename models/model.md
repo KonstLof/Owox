@@ -1,11 +1,11 @@
 Overview of toggling options.
-=============================
+*****************************
 
 First of all the data should be updated once a week on Wednesday 08:00 to be safe that GA
 has processed all data. The earliest data is the preceding Sunday.
 
 Date options:
--------------
+*************
     ● Last week (Mon-Sun)
     ● Last 2 weeks
     ● Last 4 weeks
@@ -29,7 +29,7 @@ The deltas (comparison period) on the graph should be in the following logic:
     ● Lifetime - no comparison
 
 UTMs
-----
+****
     ● Channel
     ● source/medium
     ● Campaign
@@ -37,7 +37,7 @@ UTMs
     ● Content
 
 Countries:
-----------
+**********
     ● All
     ● UK
     ● Estonia
