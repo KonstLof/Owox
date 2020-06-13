@@ -155,82 +155,82 @@ models:
           tests:
               - not_null
               - accepted_values:
-                    values: [0, 1]
+                    values: [0, 1, 2]
                     quote: false
         - name: quoteCreated
           description: Goal 2. 
           tests:
               - not_null
               - accepted_values:
-                    values: [0, 1]
+                    values: [0, 1, 2]
                     quote: false
         - name: engagedUser60s
           description: Goal 3. 
           tests:
               - not_null
               - accepted_values:
-                    values: [0, 1]
+                    values: [0, 1, 2]
                     quote: false
         - name: viewedSignupPage
-          description: Goal 4. 
-          tests:
-              - not_null
-              - accepted_values:
-                    values: [0, 1]
-                    quote: false
-        - name: signupServerSide
           description: Goal 7. 
           tests:
               - not_null
               - accepted_values:
-                    values: [0, 1]
+                    values: [0, 1, 2]
                     quote: false
-        - name: quoteCreated2
+        - name: signupServerSide
           description: Goal 8. 
           tests:
               - not_null
               - accepted_values:
-                    values: [0, 1]
+                    values: [0, 1, 2]
                     quote: false
-        - name: signupFrontEnd
-          description: Goal 12. 
-          tests:
-              - not_null
-              - accepted_values:
-                    values: [0, 1]
-                    quote: false
-        - name: quoteAccepted
-          description: Goal 13. 
-          tests:
-              - not_null
-              - accepted_values:
-                    values: [0, 1]
-                    quote: false
-        - name: inProductionPurchase
+        - name: quoteCreated2
           description: Goal 9. 
           tests:
               - not_null
               - accepted_values:
-                    values: [0, 1]
+                    values: [0, 1, 2]
                     quote: false
-        - name: cadFileUpload
+        - name: signupFrontEnd
           description: Goal 10. 
           tests:
               - not_null
               - accepted_values:
-                    values: [0, 1]
+                    values: [0, 1, 2]
+                    quote: false
+        - name: quoteAccepted
+          description: Goal 11. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1, 2]
+                    quote: false
+        - name: inProductionPurchase
+          description: Goal 12. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1, 2]
+                    quote: false
+        - name: cadFileUpload
+          description: Goal 13. 
+          tests:
+              - not_null
+              - accepted_values:
+                    values: [0, 1, 2]
                     quote: false
         - name: engagedUserBlog
           description: Goal 16. 
           tests:
               - not_null
               - accepted_values:
-                    values: [0, 1]
+                    values: [0, 1, 2]
                     quote: false
         - name: clickedBtnInstantQuote
           description: Goal 17. 
           tests:
               - not_null
               - accepted_values:
-                    values: [0, 1]
+                    values: [0, 1, 2]
                     quote: false
