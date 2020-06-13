@@ -41,5 +41,5 @@ models:
         stage:
             materialized: "view"
         vars:
-            start_date: "'2020-01-01'"
-            end_date: "'2020-01-31'"
+            start_date: "'2020-01-01'" # use special date 1900-01-01 for delta load by period of last week (Mon-Sun)
+            end_date: "'2020-01-31'" # use special date 1900-01-01 for delta load by period of last week (Mon-Sun)
